@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.meleve.ui.theme.MeLeveTheme
 import com.google.android.gms.maps.model.CameraPosition
@@ -33,9 +34,6 @@ import com.google.android.gms.maps.model.StrokeStyle
 import com.google.android.gms.maps.model.StyleSpan
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
-import com.google.maps.android.compose.Marker
-import com.google.maps.android.compose.MarkerState
-import com.google.maps.android.compose.Polyline
 import com.google.maps.android.compose.rememberCameraPositionState
 
 class MainActivity : ComponentActivity() {
@@ -43,7 +41,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            MeLeveTheme(dynamicColor = false) {
+            MeLeveTheme() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -73,51 +71,16 @@ class MainActivity : ComponentActivity() {
                     val polylinePoints = listOf(singapore, singaporeb)
 
                     Column {
-                        FormDestination()
 
-                        GoogleMap(
-                            modifier = Modifier,
-                            cameraPositionState = cameraPositionState,
-                        ) {
+//                        FormDestination()
 
-                        }
+//                        GoogleMap(
+//                            modifier = Modifier,
+//                            cameraPositionState = cameraPositionState,
+//                        ) {
+//
+//                        }
                     }
-                }
-            }
-        }
-    }
-
-    @Composable
-    fun FormDestination() {
-        Column(modifier = Modifier.padding(12.dp)) {
-            OutlinedTextField(
-                value = "",
-                onValueChange = { },
-                label = { Text("User id") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            OutlinedTextField(
-                value = "",
-                onValueChange = { },
-                label = { Text("Origin") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            OutlinedTextField(
-                value = "",
-                onValueChange = { },
-                label = { Text("Destination") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd) {
-                Button(
-                    onClick = ({})
-                ) {
-                    Text("Ver Preços")
                 }
             }
         }

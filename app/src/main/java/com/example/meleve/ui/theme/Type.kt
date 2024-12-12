@@ -30,15 +30,15 @@ val Typography = Typography(
     ),
     headlineSmall = TextStyle(
         fontFamily = if (activatedPreview) FontFamily.Default else rubikFontFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Bold,
         fontSize = 16.sp,
+        lineHeight = 0.sp,
+        letterSpacing = 0.sp
     ),
     bodyLarge = TextStyle(
         fontFamily = if (activatedPreview) FontFamily.Default else rubikFontFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
     ),
     titleLarge = TextStyle(
         fontFamily = if (activatedPreview) FontFamily.Default else rubikFontFamily,
@@ -53,5 +53,11 @@ val Typography = Typography(
         fontSize = 11.sp,
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
+    ),
+    labelLarge = TextStyle(
+        fontFamily = if (activatedPreview) FontFamily.Default else rubikFontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 16.sp,
     )
+
 )

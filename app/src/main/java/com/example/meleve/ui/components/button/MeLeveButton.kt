@@ -4,7 +4,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
@@ -20,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.meleve.ui.theme.GreenBase
 import com.example.meleve.ui.theme.Typography
 
@@ -29,10 +32,26 @@ fun MeLeveButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
     text: String? = null,
-    iconRes: ImageVector? = null
+    iconRes: ImageVector? = null,
+    size: String = "md"
 ) {
+    val height = when(size) {
+        "sm" -> 22.dp
+        "md" -> 56.dp
+        else -> 66.dp
+    }
+    val textSyle = when(size) {
+        "sm" -> Typography.labelLarge.copy(fontSize = 10.sp)
+        "md" -> Typography.labelLarge
+        else -> Typography.labelLarge.copy(fontSize = 24.sp)
+    }
+    val iconSize = when(size) {
+        "sm" -> 12.dp
+        "md" -> 24.dp
+        else -> 32.dp
+    }
     Button(
-        modifier = modifier.heightIn(min = 56.dp),
+        modifier = modifier.heightIn(min = height),
         shape = RoundedCornerShape(16.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = GreenBase,
@@ -42,13 +61,13 @@ fun MeLeveButton(
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             iconRes?.let {
-                Icon(iconRes, contentDescription = "Button icon")
+                Icon(iconRes, contentDescription = "Button icon", modifier = Modifier.height(iconSize))
             }
             text?.let {
-                Text(text = text.uppercase(), style = Typography.labelLarge)
+                Text(text = text.uppercase(), style = textSyle)
             }
         }
     }
@@ -63,6 +82,19 @@ fun MeLeveFormPreview() {
         iconRes = Icons.Rounded.Done
     )
 }
+
+
+@Preview
+@Composable
+fun MeLeveFormSmPreview() {
+    MeLeveButton(
+        modifier = Modifier.fillMaxWidth(),
+        text = "Me leve",
+        iconRes = Icons.Rounded.Done,
+        size = "sm"
+    )
+}
+
 
 @Preview
 @Composable

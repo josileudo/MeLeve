@@ -48,10 +48,10 @@ data class Route(
     val description: String? = null,
     val warnings: List<String>? = null,
     val viewport: Viewport? = null,
-    val travelAdvisory: TravelAdvisory? = null,
+    val travelAdvisory: TravelAdvisory? ,
     val localizedValues: LocalizedValues? = null,
     val routeLabels: List<String>? = null,
-    val polylineDetails: PolylineDetails? = null
+    val polylineDetails: PolylineDetails?
 )
 
 @Serializable
@@ -114,14 +114,14 @@ data class Viewport(
 
 @Serializable
 data class TravelAdvisory(
-    val type: String,
-    val description: String
+    val type: String? = null ,
+    val description: String? = null
 )
 
 @Serializable
 data class PolylineDetails(
-    val startLocation: Location,
-    val endLocation: Location
+    val startLocation: Location? = null,
+    val endLocation: Location? = null
 )
 
 @Serializable

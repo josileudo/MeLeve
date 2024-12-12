@@ -24,7 +24,7 @@ data class MeLeveRequest (
 )
 
 object MeLeveRemoteDataSource {
-    private const val LOCAL_HOST_EMULATOR_BASE_URL = "http://10.0.2.2:3333"
+    private const val LOCAL_HOST_EMULATOR_BASE_URL = "https://xd5zl5kk2yltomvw5fb37y3bm40vsyrx.lambda-url.sa-east-1.on.aws"
     private const val BASE_URL = LOCAL_HOST_EMULATOR_BASE_URL
 
     suspend fun getCustomerTravels(payload: MeLeveCustomerTravelsPayload): Result<List<MeLeveCustomerTravels>> = try {
@@ -44,8 +44,10 @@ object MeLeveRemoteDataSource {
             setBody(payload)
         }.body()
 
+        println("*** ${estimate}")
         Result.success(estimate)
     } catch (e: Exception) {
+        println("*** ${e}")
         Result.failure(e)
     }
 
@@ -57,5 +59,6 @@ object MeLeveRemoteDataSource {
         Result.success(confirm)
     } catch (e: Exception) {
         Result.failure(e)
+
     }
 }

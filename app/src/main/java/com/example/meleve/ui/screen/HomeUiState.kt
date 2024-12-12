@@ -1,4 +1,11 @@
 package com.example.meleve.ui.screen
 
-//data class HomeUiState(
-//)
+import MeLeveEstimate
+
+data class HomeUiState(
+    val estimate: MeLeveEstimate? = null,
+
+    var customerId: String = "CT01",
+    var origin: String = "Av. Brasil, 2033 - Jardim America, São Paulo - SP, 01431-001",
+    var destination: String = "Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200",
+)

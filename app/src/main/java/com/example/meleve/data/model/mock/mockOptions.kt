@@ -1,10 +1,11 @@
 package com.example.meleve.data.model.mock
 
-import com.example.meleve.data.model.MeLeveOptions
-import com.example.meleve.data.model.MeLeveReview
+import MeLeveOption
+import MeLeveReview
 
-val mockOptions: List<MeLeveOptions> = arrayListOf(
-    MeLeveOptions(
+
+val mockOptions: List<MeLeveOption> = arrayListOf(
+    MeLeveOption(
         id = 1,
         name ="Gustavo santiago",
         description = "Olá! Sou o Homer, seu motorista camarada! Relaxe e aproveite o passeio, com direito a rosquinhas e boas risadas (e talvez alguns desvios).",
@@ -16,7 +17,7 @@ val mockOptions: List<MeLeveOptions> = arrayListOf(
         value = 20.0
     ),
 
-    MeLeveOptions(
+    MeLeveOption(
         id = 2,
         name ="José de assis",
         description = "Olá! Sou o Barney, seu motorista gente fina!  Aproveite o passeio",
@@ -28,7 +29,7 @@ val mockOptions: List<MeLeveOptions> = arrayListOf(
         value = 35.5
     ),
 
-    MeLeveOptions(
+    MeLeveOption(
         id = 3,
         name ="Moisés Castro",
         description = "Olá! Sou o Moisés, vamos comer rosquinhas e dar boas risadas (e talvez alguns desvios).",

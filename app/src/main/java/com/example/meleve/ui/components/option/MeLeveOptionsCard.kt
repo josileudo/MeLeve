@@ -1,5 +1,7 @@
 package com.example.meleve.ui.components.option
 
+import MeLeveOption
+import MeLeveReview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -28,8 +30,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.meleve.R
-import com.example.meleve.data.model.MeLeveOptions
-import com.example.meleve.data.model.MeLeveReview
 import com.example.meleve.ui.components.button.MeLeveButton
 import com.example.meleve.ui.components.rating.MeLeveRating
 import com.example.meleve.ui.theme.Gray100
@@ -39,8 +39,8 @@ import java.text.NumberFormat
 @Composable
 fun MeLeveOptionsCard(
     modifier: Modifier = Modifier,
-    options: MeLeveOptions,
-    onCLick: (MeLeveOptions) -> Unit = {}
+    options: MeLeveOption,
+    onCLick: (MeLeveOption) -> Unit = {}
 ) {
     Card(
         modifier = modifier
@@ -129,7 +129,7 @@ fun MeLeveOptionsCard(
 @Composable
 private fun MeLeveMotoristCardPreview() {
     MeLeveOptionsCard(
-        options = MeLeveOptions(
+        options = MeLeveOption(
             id = 1,
             name ="Gustavo santiago",
             description = "Olá! Sou o Homer, seu motorista camarada! Relaxe e aproveite o passeio, com direito a rosquinhas e boas risadas (e talvez alguns desvios).",

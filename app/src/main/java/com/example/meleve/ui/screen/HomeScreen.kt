@@ -10,14 +10,12 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.meleve.data.model.MeLeveEstimatePayload
 import com.example.meleve.ui.components.button.MeLeveButton
-import kotlin.reflect.KFunction1
+import com.example.meleve.ui.screen.Route.Home
 
 @Composable
 fun HomeScreen(
@@ -26,6 +24,17 @@ fun HomeScreen(
     onEvent: (HomeUiEvent) -> Unit,
     onNavigationToTravelOptions: () -> Unit = {},
 ) {
+
+    LaunchedEffect(uiState.navigationEvent) {
+        when (uiState.navigationEvent) {
+            is NavigationEvent.ToTravelOptions -> {
+                onNavigationToTravelOptions()
+                onEvent(HomeUiEvent.ConsumeNavigationEvent)
+            }
+            null -> Unit
+        }
+    }
+
 
     Column {
         Column(modifier = Modifier.padding(12.dp)) {
@@ -59,14 +68,13 @@ fun HomeScreen(
                 .padding(horizontal = 16.dp),
             iconRes = Icons.Filled.LocationOn,
             text = "ver preços",
-            onClick = { onEvent.invoke(HomeUiEvent.OnFetchEstimates(
-                MeLeveEstimatePayload(
-                    uiState.customerId,
-                    uiState.origin,
-                    uiState.destination
-                )
-            )) }
+            isLoading = uiState.isLoading,
+            onClick = {
+                onEvent.invoke(HomeUiEvent.OnFetchEstimates)
+            }
         )
+
+        Text(text = "${uiState.isLoading}")
 
         Text(text = "${uiState.estimate}, ${uiState.origin}, ${uiState.destination}")
     }

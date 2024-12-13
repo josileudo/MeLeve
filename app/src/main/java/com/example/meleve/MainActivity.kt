@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
                     }
 
                     composable<TvlOptions> {
-                        TravelOptions()
+                        TravelOptions(estimate = homeUiState.estimate)
                     }
                 }
             }

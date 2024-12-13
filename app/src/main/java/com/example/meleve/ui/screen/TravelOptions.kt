@@ -1,5 +1,6 @@
 package com.example.meleve.ui.screen
 
+import MeLeveEstimate
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,16 +26,16 @@ import com.example.meleve.ui.theme.Gray100
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TravelOptions() {
+fun TravelOptions(
+    modifier: Modifier = Modifier,
+    estimate: MeLeveEstimate? = null
+) {
     val bottomSheetState = rememberBottomSheetScaffoldState()
     val isBottomSheetVisible by remember { mutableStateOf(true) }
 
     val configuration = LocalConfiguration.current
 
     Column {
-
-//        MeLeveOptionsCard()
-
         if(isBottomSheetVisible) {
             BottomSheetScaffold(
                 scaffoldState = bottomSheetState,
@@ -42,13 +43,15 @@ fun TravelOptions() {
                 sheetPeekHeight = configuration.screenHeightDp.dp * 0.5f,
                 sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
                 sheetContent = {
-                    MeLeveOptionsCardList(
-                        modifier = Modifier.fillMaxWidth().padding(16.dp),
-                        options = mockOptions,
-                        onOptionCLick = {
-                            // Chamada a api de escolha
-                        }
-                    )
+                    estimate?.options?.let {
+                        MeLeveOptionsCardList(
+                            modifier = Modifier.fillMaxWidth().padding(16.dp),
+                            options = estimate.options,
+                            onOptionCLick = {
+                                // Chamada a api de escolha
+                            }
+                        )
+                    }
                 },
                 content = {
                     Box(modifier = Modifier.padding(it)) {
@@ -63,5 +66,5 @@ fun TravelOptions() {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun TravelOptionsPreview() {
-    TravelOptions()
+    TravelOptions(estimate = null)
 }

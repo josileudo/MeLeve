@@ -10,7 +10,8 @@ data object Splash
 data object Home
 
 @Serializable
-data object TravelSolicitation
+data object TvlOptions
+
 
 @Serializable
-data object TvlOptions
+data object TvlHistoric

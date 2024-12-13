@@ -44,10 +44,8 @@ object MeLeveRemoteDataSource {
             setBody(payload)
         }.body()
 
-        println("*** ${estimate}")
         Result.success(estimate)
     } catch (e: Exception) {
-        println("*** ${e}")
         Result.failure(e)
     }
 
@@ -59,6 +57,5 @@ object MeLeveRemoteDataSource {
         Result.success(confirm)
     } catch (e: Exception) {
         Result.failure(e)
-
     }
 }

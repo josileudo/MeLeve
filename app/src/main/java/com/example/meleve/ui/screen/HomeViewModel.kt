@@ -25,7 +25,7 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun consumeNavigationEvent() {
+    private fun consumeNavigationEvent() {
         _uiState.update { it.copy(navigationEvent = null) }
     }
 
@@ -64,7 +64,8 @@ class HomeViewModel : ViewModel() {
                         currentUiState.copy(
                             estimate = null,
                             isLoading = false,
-                            error = err.message
+                            error = err.message,
+                            navigationEvent = NavigationEvent.OpenAlert
                         )
                     }
                 }

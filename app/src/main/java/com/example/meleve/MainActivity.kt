@@ -51,7 +51,10 @@ class MainActivity : ComponentActivity() {
                     }
 
                     composable<TvlOptions> {
-                        TravelOptions(estimate = homeUiState.estimate)
+                        TravelOptions(
+                            estimate = homeUiState.estimate,
+                            onNavigateBack = {navController.popBackStack()}
+                        )
                     }
                 }
             }

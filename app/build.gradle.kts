@@ -85,7 +85,7 @@ dependencies {
     implementation(libs.kotlin.serialization)
     implementation(platform(libs.ktor.bom))
     implementation(libs.bundles.ktor)
-
+    implementation (libs.android.maps.utils)
 // DEFAULTS
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
